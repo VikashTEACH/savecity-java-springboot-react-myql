@@ -76,11 +76,11 @@ Users can capture photos of waste, specify its type (dry, solid, liquid, etc.), 
 ## 🏗️ Project Architecture
 
 Controller Layer
-↓
+      ↓
 Service Layer
-↓
+      ↓
 Repository Layer
-↓
+      ↓
 Database (MySQL)
 
 ## 📁 Project Structure
