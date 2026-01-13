@@ -29,10 +29,10 @@ Users can capture photos of waste, specify its type (dry, solid, liquid, etc.), 
 
 ## 👥 User Roles
 
-| Role | Description
-| |
-| Citizen | Can create & track complaints
-| Admin | Full system control
+| Role    | Description                     |
+|-------- |---------------------------------|
+| Citizen | Can create & track complaints   |
+| Admin   | Full system control             |
 
 ## 🛠️ Tech Stack
 
