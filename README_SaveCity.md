@@ -7,48 +7,228 @@ Users can capture photos of waste, specify its type (dry, solid, liquid, etc.), 
 
 ---
 
+## 🎯 Objectives
+
+🔹Digitize city complaint & service management
+🔹Provide role-based access
+🔹Maintain centralized city data
+🔹Improve response time
+🔹Enable future smart-city integrations
+
 ## 🚀 Key Features
 
-- 📸 **Waste Reporting:** Capture and upload images of waste.
-- 🧾 **Categorization:** Classify waste as dry, solid, wet, or industrial.
-- 🧍 **User Management:** Register and manage users who report issues.
-- 🗺️ **Address Tracking:** Store the waste location and user address.
-- 🧹 **Municipal Dashboard:** Municipal authorities can view, assign, and update cleaning tasks.
-- ⚙️ **RESTful APIs:** Simple and well-structured backend APIs.
-- 🛡️ **Exception Handling:** Clean and descriptive error messages.
+🔹 📸 **Waste Reporting:** Capture and upload images of waste.
+🔹 🧾 **Categorization:** Classify waste as dry, solid, wet, or industrial.
+🔹🧍 **User Management:** Register and manage users who report issues.
+🔹 🗺️ **Address Tracking:** Store the waste location and user address.
+🔹 🧹 **Municipal Dashboard:** Municipal authorities can view, assign, and update cleaning tasks.
+🔹 ⚙️ **RESTful APIs:** Simple and well-structured backend APIs.
+🔹 🛡️ **Exception Handling:** Clean and descriptive error messages.
 
 ---
+
+## 👥 User Roles
+
+| Role | Description
+| |
+| Citizen | Can create & track complaints
+| Admin | Full system control
 
 ## 🛠️ Tech Stack
 
-| Layer           | Technology                               |
-| --------------- | ---------------------------------------- |
-| Backend         | Spring Boot, Spring Web, Spring Data JPA |
-| Database        | MySQL                                    |
-| Build Tool      | Maven                                    |
-| Language        | Java 17+                                 |
-| IDE             | Eclipse / VS Code                        |
-| Version Control | Git & GitHub                             |
+## Backend (savecity-backend)
+
+    🔹Java – Core programming language
+    🔹Spring Boot – Backend framework for building REST APIs
+    🔹Spring MVC – Request handling & controller layer
+    🔹Spring Data JPA (Hibernate) – ORM & database interaction
+    🔹Maven – Dependency & build management
+    🔹MySQL – Relational database
+    🔹RESTful APIs – Client–server communication
+    🔹JWT (Planned) – Authentication & authorization (future-ready)
+
+## Frontend (savecity-manish)
+
+    🔹React.js – Frontend JavaScript library
+    🔹JavaScript (ES6+) – Application logic
+    🔹HTML5 – Page structure
+    🔹CSS3 – Styling & layout
+    🔹Axios / Fetch API – API communication
+    🔹React Context API – State management
+    🔹React Router DOM – Page routing
+
+## Development & Tools
+
+    🔹Git & GitHub – Version control
+    🔹Postman – API testing
+    🔹VS Code / IntelliJ IDEA – Code editors
+    🔹Node.js & npm – Frontend package management
+
+## Architecture & Design
+
+    🔹Layered Architecture (Controller → Service → Repository)
+    🔹REST Architecture
+    🔹MVC Pattern
+    🔹DTO Pattern
 
 ---
 
+## 🏗️ Project Architecture
+
+Controller Layer
+↓
+Service Layer
+↓
+Repository Layer
+↓
+Database (MySQL)
+
 ## 📁 Project Structure
 
+## 📦 ROOT LEVEL STRUCTURE
+
 ```
-savecity/
- ├── src/
- │   ├── main/
- │   │   ├── java/com/app/savecity/
- │   │   │   ├── user/                # User entity and logic
- │   │   │   ├── address/             # Address model
- │   │   │   ├── wastissue/           # Waste issue module (controller, service, entity)
- │   │   │   ├── error/               # Custom exceptions & handlers
- │   │   │   └── SavecityApplication.java
- │   │   └── resources/
- │   │       └── application.properties
- │   └── test/
- ├── pom.xml
- └── README.md
+  Project/
+
+  ├── __MACOSX/                   # Mac OS auto-generated     folder    (ignore)
+  │
+  ├── savecity-backend/             # Spring Boot Backend
+  │
+  ├── savecity-manish/              # Frontend (React)
+  │
+  └── README.md                     # Main project README
+
+```
+
+## 🔧 savecity-backend (Spring Boot – COMPLETE)
+
+```
+  savecity-backend/
+  │
+  ├── .gitignore
+  ├── mvnw
+  ├── mvnw.cmd
+  ├── pom.xml
+  ├── README.md
+  │
+  ├── src/
+  │   ├── main/
+  │   │   ├── java/
+  │   │   │   └── com/
+  │   │   │       └── savecity/
+  │   │   │
+  │   │   │           ├── SaveCityApplication.java
+  │   │   │
+  │   │   │           ├── controller/
+  │   │   │           │   ├── ComplaintController.java
+  │   │   │           │   ├── UserController.java
+  │   │   │           │   └── AdminController.java
+  │   │   │
+  │   │   │           ├── service/
+  │   │   │           │   ├── ComplaintService.java
+  │   │   │           │   ├── UserService.java
+  │   │   │           │   └── impl/
+  │   │   │           │       ├── ComplaintServiceImpl.java
+  │   │   │           │       └── UserServiceImpl.java
+  │   │   │
+  │   │   │           ├── repository/
+  │   │   │           │   ├── ComplaintRepository.java
+  │   │   │           │   └── UserRepository.java
+  │   │   │
+  │   │   │           ├── model/
+  │   │   │           │   ├── Complaint.java
+  │   │   │           │   ├── User.java
+  │   │   │           │   └── Role.java
+  │   │   │
+  │   │   │           ├── dto/
+  │   │   │           │   ├── ComplaintRequestDto.java
+  │   │   │           │   ├── ComplaintResponseDto.java
+  │   │   │           │   └── UserDto.java
+  │   │   │
+  │   │   │           ├── exception/
+  │   │   │           │   ├── ResourceNotFoundException.java
+  │   │   │           │   └── GlobalExceptionHandler.java
+  │   │   │
+  │   │   │           ├── config/
+  │   │   │           │   └── CorsConfig.java
+  │   │   │
+  │   │   │           ├── security/          # future ready
+  │   │   │           │   ├── JwtFilter.java
+  │   │   │           │   ├── JwtUtil.java
+  │   │   │           │   └── SecurityConfig.java
+  │   │   │
+  │   │   │           └── util/
+  │   │   │               └── ApiResponse.java
+  │   │   │
+  │   │   └── resources/
+  │   │       ├── application.properties
+  │   │       ├── application-dev.properties
+  │   │       ├── application-prod.properties
+  │   │       ├── static/
+  │   │       └── templates/
+  │   │
+  │   └── test/
+  │       └── java/
+  │           └── com/
+  │               └── savecity/
+  │                   └── SaveCityApplicationTests.java
+  │
+  └── docs/
+  ├── api-docs.md
+  └── database-schema.sql
+
+```
+
+## 🎨 savecity-manish (Frontend – React COMPLETE)
+
+```
+  savecity-manish/
+  │
+  ├── .gitignore
+  ├── package.json
+  ├── package-lock.json
+  ├── README.md
+  │
+  ├── public/
+  │   ├── index.html
+  │   ├── favicon.ico
+  │   └── assets/
+  │
+  ├── src/
+  │   ├── index.js
+  │   ├── App.js
+  │   ├── App.css
+  │
+  │   ├── components/
+  │   │   ├── Navbar.js
+  │   │   ├── Footer.js
+  │   │   ├── ComplaintCard.js
+  │   │   └── Loader.js
+  │
+  │   ├── pages/
+  │   │   ├── Home.js
+  │   │   ├── Login.js
+  │   │   ├── Register.js
+  │   │   ├── RaiseComplaint.js
+  │   │   ├── MyComplaints.js
+  │   │   └── AdminDashboard.js
+  │
+  │   ├── services/
+  │   │   ├── api.js
+  │   │   ├── complaintService.js
+  │   │   └── authService.js
+  │
+  │   ├── context/
+  │   │   └── AuthContext.js
+  │
+  │   ├── utils/
+  │   │   └── constants.js
+  │
+  │   └── styles/
+  │       └── main.css
+  │
+  └── build/
+
 ```
 
 ---
@@ -57,9 +237,9 @@ savecity/
 
 ### 1️⃣ Prerequisites
 
-- Java 17 or above
-- Maven 3.8+
-- MySQL Server
+🔹 Java 17 or above
+🔹 Maven 3.8+
+🔹 MySQL Server
 
 ### 2️⃣ Clone the Repository
 
@@ -124,10 +304,10 @@ Open [http://localhost:8080](http://localhost:8080)
 
 ## 📸 Future Enhancements
 
-- 🗺️ Integration with Google Maps API for location tracking
-- 🔔 Real-time notifications to municipal teams
-- 🧾 Waste cleaning status tracking and feedback
-- 🌍 Mobile app for quick photo uploads
+🔹 🗺️ Integration with Google Maps API for location tracking
+🔹 🔔 Real-time notifications to municipal teams
+🔹 🧾 Waste cleaning status tracking and feedback
+🔹 🌍 Mobile app for quick photo uploads
 
 ---
 
@@ -135,24 +315,24 @@ Open [http://localhost:8080](http://localhost:8080)
 
 ## 🚧 Project Status
 
-- 🛠️ This project is currently under development.
-  Some features and modules are still in progress — including image upload, municipal dashboard, and React frontend integration.
-  Future updates will include a fully functional user interface and improved backend logic.
+🔹🟡 Partially Completed
+🔹✔ Core backend APIs implemented
+🔹🔧 Security & frontend integration pending
 
 ---
 
 ## 👥 Team Members
 
-- Project Title: SaveCity — Smart Waste Management & Reporting System
+🔹 Project Title: SaveCity — Smart Waste Management & Reporting System
 
-Developed by:
+## Developed by:
 
-- 👤 Vikash Sahu — Java Backend Developer
+🔹👤 Vikash Sahu — Java Backend Developer
 
-- 👥 Group Project — includes team members contributing to frontend, database, UI/UX design, and Backend
+🔹👥 Group Project — includes team members contributing to frontend, database, UI/UX design, and Backend
 
-- 📧 Contact Email: sahu.vikash.sgrl@gmail.com
+🔹📧 Contact Email: sahu.vikash.sgrl@gmail.com
 
-- 🔗 GitHub Repository: SaveCity - Java Spring Boot + React + MySQL
+🔹 🔗 GitHub Repository: SaveCity - Java Spring Boot + React + MySQL
 
 ---
